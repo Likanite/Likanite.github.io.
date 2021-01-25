@@ -1,0 +1,151 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="char.css">
+    <title>RPG</title>
+</head>
+<body>
+
+    <div class="expbar">
+        <div id="exp" class="expstyle"> </div>
+        <div id="expval"></div>
+    </div>
+
+    <div id="inventory">
+        <div id="charname"></div>
+        <div>
+            Level: 
+            <span id="charlvl"></span>
+            <span id="charspcont">
+            SP: 
+            <span id="charsp"></span></span>
+        </div>
+
+        <div id="chareq">
+            
+        </div>
+
+        <div class="hpcont">
+            HP: 
+            <span id="charhp"></span>
+            /
+            <span id="charmaxhp"></span>
+        </div>
+
+        <div class="attr">DMG: <span id="chardmg"></span></div>
+        <div class="attr">STR: <span id="charstr"></span></div>
+        <div class="attr">INT: <span id="charint"></span></div>
+        <div class="attr">AGI: <span id="charagi"></span></div>
+        <div class="attr">LUK: <span id="charluk"></span></div>
+        <div class="attr">DEF: <span id="chardef"></span></div>
+        <div class="attr">Dodge: <span id="chardge"></span></div>
+        <div class="attr">Crit dmg: <span id="charcdmg"></span></div>
+        <div class="attr">Crit chance: <span id="charcch"></span></div>
+        <div class="attr" id="bonuses_button">Elementals</div>
+        
+        
+    </div>
+
+    <div class="invwin">
+        <div class="item" id="los">
+            
+
+
+        </div>
+    </div>
+
+    <img src="metin.jpg" id="met" onclick="drop()">
+    <div id="drop">
+            
+
+
+    </div>
+    
+</body>
+<script>
+    
+var itemtooltip = document.querySelectorAll('.itemtip');
+var char = {
+    name:"Maciej",
+    level:1,
+    exp:0,
+    expreq:50,
+    hp:10,
+    maxhp:10,
+    dmg:1,
+    critchance:5,
+    critdmg:120,
+    str:1,
+    agi:1,
+    luk:1,
+    int:1,
+    def:1,
+    dodge:1,
+    sp:0,
+        bonus: {
+            earth:0,
+
+        }
+}
+upadetval();
+function upadetval(){
+document.getElementById("charname").innerHTML = char.name;
+document.getElementById("charlvl").innerHTML = char.level;
+document.getElementById("charstr").innerHTML = char.str;
+document.getElementById("charhp").innerHTML = char.hp;
+document.getElementById("charmaxhp").innerHTML = char.maxhp;
+document.getElementById("charsp").innerHTML = char.sp;
+document.getElementById("charint").innerHTML = char.int;
+document.getElementById("chardmg").innerHTML = char.dmg;
+document.getElementById("charluk").innerHTML = char.luk;
+document.getElementById("charagi").innerHTML = char.agi;
+document.getElementById("chardef").innerHTML = char.def;
+document.getElementById("charcch").innerHTML = char.critchance+"%";
+document.getElementById("charcdmg").innerHTML = char.critdmg+"%";
+document.getElementById("chardge").innerHTML = char.dodge+"%";
+};
+
+
+
+document.addEventListener('mousemove', fn, false);
+
+function fn(e) {
+    for (var i=itemtooltip.length; i--;) {
+        itemtooltip[i].style.left = e.pageX + 'px';
+        itemtooltip[i].style.top = e.pageY + 'px';
+    }
+}
+    
+   function los(){
+       var thiscol = ["gold", "red", "blue","green","pink","angel","orange"];
+       var ran = Math.floor(Math.random() * 6);
+
+        document.getElementById("los").innerHTML = 
+        "<span class='itemtip "+thiscol[ran]+ " '>Drewniany Hełm</span>" ;
+   }
+   function drop(){
+    var ranit = ["hel","dropsw","ku","yan"];
+    var ran = Math.floor(Math.random() * 3);
+    char.exp = char.exp + 6;
+    expadd();
+    document.getElementById("drop").innerHTML = "<img src='"+ranit[ran]+".png'>" ;
+    
+   }
+   function expadd(){
+    if(char.exp>=char.expreq){
+        char.exp = char.exp - char.expreq;
+        char.expreq*=1.43;
+        char.level++;
+        char.sp++;
+        char.maxhp++;
+    }
+   var percentValue = Math.min(100,(100*char.exp/char.expreq)).toFixed(1)+"%";
+   
+   document.getElementById("exp").style.width = percentValue;
+   document.getElementById("expval").innerHTML = percentValue+"&nbsp&nbsp&nbsp"+char.exp.toFixed(0)+"&nbsp/&nbsp"+char.expreq.toFixed(0);
+   updateval();
+   }
+   
+</script>
+</html>

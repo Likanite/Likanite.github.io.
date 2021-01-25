@@ -1,0 +1,72 @@
+#inventory{
+    background-color:var(--backcol);
+    color: #9c9c9c;
+    width: 450px;
+    height: 620px;
+    border-radius: 0 5% 5% 0;
+    padding:10px;
+}
+#charname{
+    text-align: center;
+    font-weight: bold;
+}
+#charspcont{
+    float: right;
+}
+.attr{
+    display: inline-block;
+    background-color: #181818;
+    width: 47%;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+#charstr,#charint,#charagi,#chardef,#charluk,#charcch,#charsp,#chardmg,#charcdmg,#chardge{
+    float: right;
+    font-style: italic;
+}
+#bonuses_button{
+    text-align: center;
+    background-color: #222222;
+}
+#bonuses_button:hover{
+    color: #b11b1b;
+    
+    cursor: pointer;
+}
+.hpcont{
+    position:relative;
+    text-align: center;
+    bottom: 0px;
+    background-color: #b11b1b;
+    color: #c9c9c9;
+}
+#chareq{
+    background-color: #181818;
+    height: 400px;
+}
+.expbar{
+    height: 20px;
+    width: 100%;
+    background-color: #25251a;
+    border-bottom: #16160f 2px solid;
+    margin-bottom: 20px;
+}
+.expstyle{   
+    height: 100%;
+    width: 0%;
+    background-color: #385710;
+    color: rgb(196, 196, 196);
+    font-size: 15px;
+    text-align: center;
+}
+#expval{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: -16px;
+    left: 0px;
+    font-size: 15px;
+    text-align: center;
+    color: #c9c9c9;
+}
+
